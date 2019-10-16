@@ -48,8 +48,9 @@ ARG INSTALL_SOAP=false
 
 RUN if [ ${INSTALL_SOAP} = true ]; then \
     # Install the soap extension
+    rm /etc/apt/preferences.d/no-debian-php && \
     apt-get update -yqq && \
-    apt-get -y install libxml2-dev php-soap && \
+    apt-get -y --allow-unauthenticated install libxml2-dev php-soap && \
     docker-php-ext-install soap \
 ;fi
 

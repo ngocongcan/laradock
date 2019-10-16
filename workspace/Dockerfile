@@ -156,7 +156,8 @@ ARG PHP_VERSION=${PHP_VERSION}
 
 RUN if [ ${INSTALL_SOAP} = true ]; then \
   # Install the PHP SOAP extension
-  apt-get -y install libxml2-dev php${PHP_VERSION}-soap \
+  apt-get update -y && \
+  apt-get -y --allow-unauthenticated install libxml2-dev php-soap \
 ;fi
 
 ###########################################################################
